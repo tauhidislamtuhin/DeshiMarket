@@ -1,0 +1,104 @@
+/* Overall Container */
+.login-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+}
+
+/* Form Section */
+.form-section {
+    width: 30%;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    height: 400px;
+}
+
+h2 {
+    text-align: center;
+    color: #333333;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555555;
+}
+
+input[type="email"],
+input[type="password"] {
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 15px;
+    font-size: 14px;
+    width: 100%;
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus {
+    border-color: #80bdff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+
+
+/* Image Section */
+.image-section {
+
+    padding-left: 50px;
+}
+
+.image-section img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+/* Adjust Container for Form and Image */
+@media (max-width: 768px) {
+    .login-container {
+        flex-direction: column;
+    }
+
+    .form-section,
+    .image-section {
+        width: 90%;
+    }
+
+    .image-section img {
+        max-width: 200px;
+    }
+}

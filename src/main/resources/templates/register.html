@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Register</title>
+  <link rel="stylesheet" href="/css/register_style.css">
+</head>
+<body>
+<div class="container">
+  <h2>Register</h2>
+  <form th:action="@{/register}" th:object="${login}" method="post">
+    <label for="name">Name:</label>
+    <input type="text" id="name" th:field="*{name}" required />
+
+    <label for="username">Username:</label>
+    <input type="text" id="username" th:field="*{username}" required />
+    <div id="usernameError" class="error-message"></div>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" th:field="*{email}" required />
+    <div id="emailError" class="error-message"></div>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" th:field="*{password}" required />
+
+    <label for="role">Role:</label>
+    <select id="role" th:field="*{role}" required>
+      <option value="" disabled selected>Select your role</option>
+      <option value="Buyer">Buyer</option>
+      <option value="Seller">Seller</option>
+    </select>
+    <label for="about">About:</label>
+    <input type="text" id="about" th:field="*{about}" />
+
+    <label for="picture">Picture:</label>
+    <input type="text" id="picture" th:field="*{picture}" />
+
+    <button type="submit">Register</button>
+  </form>
+  <div th:if="${message}" th:class="'message ' + (${message} != null ? 'success' : '')" th:text="${message}"></div>
+  <div th:if="${error}" th:class="'message ' + (${error} != null ? 'error' : '')" th:text="${error}"></div>
+
+
+  <script>
+    document.getElementById("registerForm").addEventListener("submit", function(event) {
+      const emailField = document.getElementById("email");
+      const emailError = document.getElementById("emailError");
+
+      // Reset error message
+      emailError.textContent = "";
+
+      // Check if email is empty
+      if (!emailField.value.trim()) {
+        event.preventDefault(); // Stop form submission
+        emailError.textContent = "Email is required.";
+      }
+    });
+  </script>
+
+</div>
+</body>
+</html>
