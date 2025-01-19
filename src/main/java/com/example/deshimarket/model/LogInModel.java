@@ -2,6 +2,7 @@ package com.example.deshimarket.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Value;
 
 @Entity
 @Table(name = "LOGIN_TABLE")
@@ -23,6 +24,8 @@ public class LogInModel {
     private String role;
     private String about;
     private String picture;
+    @Column(nullable=false)
+    private double balance =0.0;
 
 
 }
