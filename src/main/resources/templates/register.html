@@ -6,56 +6,46 @@
 </head>
 <body>
 <div class="container">
-  <h2>Register</h2>
-  <form th:object="${logInModelDto}" method="post" enctype="multipart/form-data">
-    <label for="name">Name:</label>
-    <input type="text" id="name" th:field="*{name}" required />
+  <div class="form-section">
+    <h2>Register</h2>
+    <form th:object="${logInModelDto}" method="post" enctype="multipart/form-data">
+      <label for="name">Name:</label>
+      <input type="text" id="name" th:field="*{name}" required />
 
-    <label for="username">Username:</label>
-    <input type="text" id="username" th:field="*{username}" required />
-    <div id="usernameError" class="error-message"></div>
+      <label for="username">Username:</label>
+      <input type="text" id="username" th:field="*{username}" required />
+      <div id="usernameError" class="error-message"></div>
 
-    <label for="email">Email:</label>
-    <input type="email" id="email" th:field="*{email}" required />
-    <div id="emailError" class="error-message"></div>
+      <label for="email">Email:</label>
+      <input type="email" id="email" th:field="*{email}" required />
+      <div id="emailError" class="error-message"></div>
 
-    <label for="password">Password:</label>
-    <input type="password" id="password" th:field="*{password}" required />
+      <label for="password">Password:</label>
+      <input type="password" id="password" th:field="*{password}" required />
 
-    <label for="role">Role:</label>
-    <select id="role" th:field="*{role}" required>
-      <option value="" disabled selected>Select your role</option>
-      <option value="Buyer">Buyer</option>
-      <option value="Seller">Seller</option>
-    </select>
-    <label for="about">About:</label>
-    <input type="text" id="about" th:field="*{about}" />
+      <label for="role">Role:</label>
+      <select id="role" th:field="*{role}" required>
+        <option value="" disabled selected>Select your role</option>
+        <option value="Buyer">Buyer</option>
+        <option value="Seller">Seller</option>
+      </select>
 
-    <label for="picture">Picture:</label>
-    <input type="file" id="picture" th:field="*{image}" />
+      <label for="about">About:</label>
+      <input type="text" id="about" th:field="*{about}" />
 
-    <button type="submit">Register</button>
-  </form>
-  <div th:if="${message}" th:class="'message ' + (${message} != null ? 'success' : '')" th:text="${message}"></div>
-  <div th:if="${error}" th:class="'message ' + (${error} != null ? 'error' : '')" th:text="${error}"></div>
+      <label for="picture">Picture:</label>
+      <input type="file" id="picture" th:field="*{image}" />
 
+      <button type="submit">Register</button>
+    </form>
+    <div th:if="${message}" th:class="'message ' + (${message} != null ? 'success' : '')" th:text="${message}"></div>
+    <div th:if="${error}" th:class="'message ' + (${error} != null ? 'error' : '')" th:text="${error}"></div>
+  </div>
 
-  <script>
-    document.getElementById("registerForm").addEventListener("submit", function(event) {
-      const emailField = document.getElementById("email");
-      const emailError = document.getElementById("emailError");
-
-      // Reset error message
-      emailError.textContent = "";
-
-      // Check if email is empty
-      if (!emailField.value.trim()) {
-        event.preventDefault(); // Stop form submission
-        emailError.textContent = "Email is required.";
-      }
-    });
-  </script>
-
+  <!-- Image Section -->
+  <div class="image-section">
+    <img src="/images/side-image.png" alt="Registration Illustration">
+  </div>
 </div>
 </body>
 </html>

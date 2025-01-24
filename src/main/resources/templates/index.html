@@ -1,10 +1,81 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <link rel="stylesheet" href="/css/test.css">
     <title>Result</title>
 </head>
 <body>
-<h2>Result</h2>
+<body>
+<!--<div class="container">
+    <nav>
+        &lt;!&ndash; Navbar content &ndash;&gt;
+    </nav>
+    <main class="main-content">
+        <div class="form-container">
+            <div class="back-button">
+                <span>&larr;</span>
+                <span>Back</span>
+            </div>
+            <h1 class="title">Register</h1>
+
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" placeholder="name">
+            </div>
+
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" placeholder="namefffts415@gmail.com">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="text" id="email" placeholder="name415@gmail.com">
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <div class="password-wrapper">
+                    <input type="password" id="password" placeholder="#3fgF##%">
+                    <span class="icon-eye">&#128065;</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="role">Role:</label>
+                <select id="role">
+                    <option value="service">Buyer</option>
+                    <option value="banana">Banana</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="about">About:</label>
+                <textarea id="about" placeholder="I am developer"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="picture">Picture:</label>
+                <input type="file" id="picture">
+            </div>
+
+            <button class="register-button">Register</button>
+
+            <p class="terms">
+                By joining, you agree to the Deshimarket Terms of Service and to
+                occasionally receive emails from us. Please read our Privacy Policy to
+                learn how we use your personal data.
+            </p>
+        </div>
+        <div class="image-container">
+            <img src="/images/side-image.png" alt="Registration Illustration">
+        </div>
+    </main>
+    <footer>
+        &lt;!&ndash; Footer content &ndash;&gt;
+    </footer>
+</div>-->
+</body>
 
 <div th:if="${message}" th:text="${login.message}"></div>
 <div th:if="${error}" th:text="${error}"></div>

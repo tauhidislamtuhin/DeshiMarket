@@ -5,42 +5,37 @@ import com.example.deshimarket.model.LogInModel;
 import com.example.deshimarket.model.LogInModelDto;
 import com.example.deshimarket.repository.LogInRepository;
 import com.example.deshimarket.service.LogInService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.Date;
-import java.util.Map;
 
 @Controller
 public class LoginController {
 
     @Autowired
     private LogInService logInService;
-    @Autowired
-    private LogInRepository logInRepository;
 
 
     @GetMapping("/register")
     public String showRegisterForm(Model model) {
         LogInModelDto logInModelDto = new LogInModelDto();
         model.addAttribute("logInModelDto", logInModelDto);
-        return "register";
+        return "login/register";
     }
 
     @PostMapping("/register")
-    public String registerUser(@ModelAttribute LogInModelDto logInModelDto, BindingResult bindingResult) {
+    public String registerUser(@ModelAttribute LogInModelDto logInModelDto, BindingResult bindingResult, HttpSession session) {
         MultipartFile image = logInModelDto.getImage();
         if (!image.isEmpty()) {
             Date date = new Date();
@@ -70,8 +65,9 @@ public class LoginController {
                 logInModel.setPicture("profiles/"+storageImageName);
                 System.out.println("Response :"+logInModel.toString());
                 logInService.registerUser(logInModel);
+                session.setAttribute("loggedInUserId", logInModel.getId());
 
-                return "index";
+                return "redirect:/login";
 
             } catch (Exception e) {
                 System.out.println("Error Response:"+e.getMessage());
@@ -89,7 +85,7 @@ public class LoginController {
             logInService.registerUser(logInModel);
 
 
-            return "index";
+            return "redirect:/login";
         }
 
         return "index";
@@ -141,17 +137,31 @@ public class LoginController {
     @GetMapping("/login")
     public String showLoginForm(Model model) {
         model.addAttribute("login", new LogInModel());
-        return "login";
+        return "login/login";
+    }
+    @GetMapping("/")
+    public String home(Model model) {
+        model.addAttribute("login", new LogInModel());
+        return "login/login";
     }
 
     @PostMapping("/login")
-    public String loginUser(@ModelAttribute LogInModel user, Model model) {
+    public String loginUser(@ModelAttribute LogInModel user, Model model,HttpSession session) {
         try {
             LogInModel loggedInUser = logInService.logIn(user.getEmail(), user.getPassword());
             model.addAttribute("message", "Login successful!");
-            model.addAttribute("login", loggedInUser);
+            model.addAttribute("user", loggedInUser);
             System.out.println("Response :"+loggedInUser.getRole());
-            return "welcome";
+            session.setAttribute("loggedInUserId", loggedInUser.getId());
+            int userId = (int) session.getAttribute("loggedInUserId");
+            System.out.println("loggedInUserId :"+userId);
+            System.out.println(user.getEmail()+" Password:"+ loggedInUser.getPassword());
+            if (loggedInUser.getRole().equals("Buyer")){
+                return "redirect:/gigs";
+            }else {
+                return "/dashboard/dashboard";
+            }
+
         } catch (Exception e) {
             model.addAttribute("error", e.getMessage());
             System.out.println("Error Response:"+e.getMessage());

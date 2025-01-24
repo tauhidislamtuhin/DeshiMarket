@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navbar</title>
+  <link rel="stylesheet" href="/css/main/style.css">
+  <link rel="stylesheet" href="/css/main/all.min.css">
+
+</head>
+<body>
+<div class="navbar">
+  <div class="container">
+    <div class="navbar-content">
+      <div class="logo">
+        <img class="logo-img" src="/images/logo.png" alt="logo">
+      </div>
+      <div class="menu">
+        <ul class="menu-list">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">Gallery</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a class="contact-btn" href="#">CONTACT</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="max-w-container mx-auto flex-col mt-12">
+  <div class="search-bar">
+    <form method="get" action="/gigs" class="mb-4 d-flex justify-content-center">
+      <input type="text" name="search" placeholder="Search by title or keywords" th:value="${search}" class="form-control w-50 me-2" />
+      <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+  </div>
+
+  <div class="filters mt-5 flex gap-8">
+    <div>
+      <select class="p-3 rounded">
+        <option value="service">Service options</option>
+        <option value="banana">Banana</option>
+        <option value="orange">Orange</option>
+      </select>
+    </div>
+    <div>
+      <select class="p-3 rounded">
+        <option value="service">Seller details</option>
+        <option value="label1">Label one</option>
+        <option value="label2">Label two</option>
+      </select>
+    </div>
+    <div>
+      <select class="p-3 rounded">
+        <option value="service">Delivery time</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="7">7</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="gigs mt-5">
+    <h1 class="text-4xl font-extrabold">All Gigs</h1>
+    <th:block th:if="${gigs.size() > 0}">
+    <div class="flex flex-wrap gap-5 " th:each="gig : ${gigs}">
+      <div class="gig-item w-1/3">
+        <img src="/images/gig1.jpg" alt="Gig 1">
+        <h3>[[${gig.title}]]</h3>
+        <p class="font-bold">Price: 80 $</p>
+        <div class="rating text-yellow-500 flex items-center gap-2">
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star-half-alt"></i>
+          <span class="text-rose-200">(70+)</span>
+        </div>
+      </div>
+      <!-- Repeat for other gigs -->
+    </div>
+    </th:block>
+  </div>
+</main>
+
+</body>
+</html>

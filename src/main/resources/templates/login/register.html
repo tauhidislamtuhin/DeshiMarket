@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Register</title>
+  <link rel="stylesheet" href="/css/login/register_style.css">
+
+</head>
+<body>
+<div class="navbar">
+  <div class="container">
+    <div class="navbar-content">
+      <div class="logo">
+        <img class="logo-img" src="/images/logo.png" alt="logo">
+      </div>
+      <div class="menu">
+        <ul class="menu-list">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">Gallery</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a class="contact-btn" href="#">CONTACT</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="register-page">
+    <div class="form-section">
+      <h1 class="title">Register</h1>
+      <form th:object="${logInModelDto}" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" id="name" th:field="*{name}" placeholder="Enter your name" required />
+        </div>
+        <div class="form-group">
+          <label for="username">Username:</label>
+          <input type="text" id="username" th:field="*{username}" placeholder="Enter your username" required />
+          <div id="usernameError" class="error-message"></div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" th:field="*{email}" placeholder="Enter your email" required />
+          <div id="emailError" class="error-message"></div>
+        </div>
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <div class="password-group">
+            <input type="password" id="password" th:field="*{password}" placeholder="Enter your password" required />
+            <span class="icon-eye" style="position: absolute;top: 50%;right: 35px;transform: translateY(-50%);cursor: pointer;">👁</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="role">Role:</label>
+          <select id="role" style="background: white" th:field="*{role}" required>
+            <option value="" disabled selected>Select your role</option>
+            <option value="Buyer">Buyer</option>
+            <option value="Seller">Seller</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="about">About:</label>
+          <textarea id="about" th:field="*{about}" placeholder="Tell us about yourself"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="picture">Picture:</label>
+          <input type="file" id="picture" th:field="*{image}" />
+        </div>
+        <button type="submit" class="register-button">Register</button>
+        <div class="container-dev">
+          <p>You have already register</p>
+          <a href="/login">LogIn</a>
+        </div>
+        <p class="terms">
+          By joining, you agree to the Deshimarket Terms of Service and to
+          occasionally receive emails from us. Please read our Privacy Policy to learn how we use your personal data.
+        </p>
+      </form>
+      <div th:if="${message}" th:class="'message ' + (${message} != null ? 'success' : '')" th:text="${message}"></div>
+      <div th:if="${error}" th:class="'message ' + (${error} != null ? 'error' : '')" th:text="${error}"></div>
+    </div>
+    <div class="image-section" >
+      <img src="/images/side-image.png" style="margin-top: 150px" alt="Registration Illustration">
+    </div>
+  </div>
+</div>
+</body>
+</html>

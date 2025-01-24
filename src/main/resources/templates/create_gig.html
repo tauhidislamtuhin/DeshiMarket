@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create New Gig</title>
+  <link rel="stylesheet" href="/css/gig/creategigs.css" />
+</head>
+<body>
+<!-- Navbar -->
+<div class="navbar">
+  <div class="container_nav">
+    <div class="navbar-content">
+      <div class="logo">
+        <img class="logo-img" src="/images/logo.png" alt="logo" />
+      </div>
+      <div class="menu">
+        <ul class="menu-list">
+          <li><a th:href="@{/}">Home</a></li>
+          <li><a th:href="@{/about}">About</a></li>
+          <li><a th:href="@{/services}">Services</a></li>
+          <li><a th:href="@{/gallery}">Gallery</a></li>
+          <li><a th:href="@{/blog}">Blog</a></li>
+          <li><a class="contact-btn" th:href="@{/contact}">CONTACT</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Form Section -->
+<div class="container">
+  <h1 class="title">Create New Gig</h1>
+  <form th:object="${gigModelDto}" method="post" enctype="multipart/form-data" class="form">
+    <div class="form-group">
+      <label for="title" class="label">Title:</label>
+      <input id="title" class="input" th:field="*{title}" type="text" placeholder="Title" required />
+    </div>
+    <div class="form-group">
+      <label for="description" class="label">Description:</label>
+      <textarea id="description" class="textarea" th:field="*{description}" placeholder="Description" required></textarea>
+    </div>
+    <div class="form-group">
+      <label for="price" class="label">Price:</label>
+      <input id="price" class="input" th:field="*{price}" type="number" step="0.01" placeholder="Price" required />
+    </div>
+    <div class="form-group">
+      <label for="keyword" class="label">Keyword:</label>
+      <input id="keyword" class="input" th:field="*{keywords}" type="text" placeholder="Keyword" required />
+    </div>
+
+    <div class="form-group">
+      <label for="image" class="label">Image:</label>
+      <input id="image" class="input" th:field="*{gigImage}" type="file" accept="image/*" required />
+    </div>
+    <div class="buttons">
+      <button type="button" class="button cancel" th:onclick="window.location.href='@{/}'">Cancel</button>
+      <button type="submit" class="button confirm">Confirm</button>
+    </div>
+  </form>
+  <div th:if="${message}" th:class="'message ' + (${message} != null ? 'success' : '')" th:text="${message}"></div>
+  <div th:if="${error}" th:class="'message ' + (${error} != null ? 'error' : '')" th:text="${error}"></div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <!-- Add your Footer content here -->
+</div>
+</body>
+</html>

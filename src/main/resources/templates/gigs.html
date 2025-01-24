@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Gig List</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/gig.css">
+</head>
+<body>
+<div class="navbar">
+  <div class="container">
+    <div class="navbar-content">
+      <div class="logo">
+        <img class="logo-img" src="/images/logo.png" alt="logo">
+      </div>
+      <div class="menu">
+        <ul class="menu-list">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">Gallery</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a class="contact-btn" href="/login">LogOut</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid mt-5" style="width: 80%">
+
+  <form method="get" action="/gigs" class="mb-4 d-flex justify-content-center">
+    <input type="text" name="search" placeholder="Search by title or keywords" th:value="${search}" class="form-control w-50 me-2" />
+    <button type="submit" class="btn btn-primary">Search</button>
+  </form>
+  <div class="filters mt-5 flex gap-8">
+    <div>
+      <select class="p-3 rounded">
+        <option value="service">Service options</option>
+        <option value="banana">Banana</option>
+        <option value="orange">Orange</option>
+      </select>
+    </div>
+    <div>
+      <select class="p-3 rounded">
+        <option value="service">Seller details</option>
+        <option value="label1">Label one</option>
+        <option value="label2">Label two</option>
+      </select>
+    </div>
+    <div>
+      <select class="p-3 rounded">
+        <option value="service">Delivery time</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="7">7</option>
+      </select>
+    </div>
+  </div>
+
+
+    <div class="card-body">
+      <div class="row g-3">
+        <!-- Check if there are any gigs available -->
+        <th:block th:if="${gigs.size() > 0}">
+          <div class="col-md-4" style="overflow: hidden; cursor: pointer" th:each="gig : ${gigs}">
+            <a th:href="@{'/gig/' + ${gig.id}}" class="text-decoration-none">
+              <div class="card card-sh h-100">
+                <div class="card-body text-center">
+                  <img th:src="${gig.picture}" alt="Gig Picture" class="gig-img mb-2">
+                  <p class="fs-5 text-center fw-bold text-dark">[[${gig.title}]]</p>
+                  <p class="fs-6 fw-bold text-primary">Price: $ [[${gig.price}]]</p>
+                </div>
+              </div>
+            </a>
+          </div>
+        </th:block>
+        <!-- If no gigs are available -->
+        <th:block th:unless="${gigs.size() > 0}">
+          <p class="fs-4 text-center mt-4 text-danger">No gigs available</p>
+        </th:block>
+      </div>
+    </div>
+  </div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

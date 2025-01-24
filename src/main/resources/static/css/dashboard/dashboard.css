@@ -1,0 +1,271 @@
+/* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: sans-serif;
+  }
+
+  /* Navbar styles */
+  .navbar {
+    background-color: #2b2b2b; /* bg-secondary color */
+    padding: 10px 0;
+  }
+
+  .container {
+    max-width: 1200px; /* Adjust as needed */
+    margin: 0 auto;
+  }
+
+  .navbar-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 16px;
+  }
+
+  .logo {
+    width: 25%;
+  }
+
+  .logo-img {
+    width: 70px;
+    height: 70px;
+    border-radius: 10%;
+  }
+
+  .menu {
+    width: 75%;
+  }
+
+  .menu-list {
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    gap: 30px;
+    font-weight: 600;
+    font-size: 16px;
+    color: white;
+    position: absolute;
+    top: -147px;
+    right: 0;
+    width: 100%;
+    transition: top 0.3s ease;
+    text-align: center;
+  }
+
+  .menu-list li a {
+    text-decoration: none;
+    color: white;
+    padding: 10px 15px;
+  }
+
+  .menu-list li a:hover {
+    color: #f1c40f; /* Light yellow for hover effect */
+  }
+
+  .contact-btn {
+    border: 1px solid #f1c40f; /* border-boderyello color */
+    padding: 10px 20px;
+    border-radius: 10px;
+  }
+
+  .menu-list.active {
+    top: 0;
+  }
+
+  @media (min-width: 768px) {
+    .menu-list {
+      position: static;
+      top: 0;
+      display: flex;
+    }
+
+    .menu-list li a {
+      padding: 10px 20px;
+    }
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .mt-50 {
+    margin-top: 50px;
+  }
+
+  .flex {
+    display: flex;
+  }
+
+  .pl-10 {
+    padding-left: 10px;
+  }
+
+  .gap-6 {
+    gap: 24px;
+  }
+
+  .flex-wrap {
+    flex-wrap: wrap;
+  }
+
+  /* Typography */
+  .text-40 {
+    font-size: 40px;
+  }
+
+  .text-20 {
+    font-size: 20px;
+  }
+
+  .font-extrabold {
+    font-weight: 800;
+  }
+
+  .font-semibold {
+    font-weight: 600;
+  }
+
+  /* Card Styles */
+  .card {
+    width: 260px;
+    padding: 20px;
+    border: 1px solid #0c0c0d;
+    border-radius: 10px;
+    box-sizing: border-box;
+    text-align: center;
+  }
+
+  .card-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-size: 40px;
+    font-weight: 600;
+  }
+
+  /* Icon Styles */
+  .icon-dollar::before {
+    content: "💵";
+  }
+
+  .icon-chevron-down::before {
+    content: "🔽";
+  }
+
+  .icon-chevron-up::before {
+    content: "🔼";
+  }
+
+  .user-profile {
+    padding: 87px 55px 11px;
+    border: 1px solid #0c0c0d;
+    border-radius: 10px;
+    max-width: 400px;
+    margin: 0 auto;
+
+  }
+
+  /* Profile Header */
+  .profile-header {
+    /*display: flex;*/
+    align-items: center;
+
+  }
+
+  .profile-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+  }
+
+  .profile-name {
+    font-size: 25px;
+    font-weight: 500;
+  }
+
+  /* Section Title */
+  .section-title {
+    margin: 30px 0;
+    font-size: 30px;
+    font-weight: 500;
+  }
+
+  /* Menu Grid */
+  .menu-grid {
+    display: grid;
+    gap: 20px;
+  }
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 15px;
+  background-color: #ffffff; /* Default background color */
+  border-radius: 5px;        /* Rounded corners */
+  transition: background-color 0.3s ease; /* Smooth transition */
+  cursor: pointer;           /* Pointer cursor for clickable effect */
+}
+
+.menu-item:hover {
+  background-color: #287ba7; /* Hover background color */
+}
+
+.menu-item i {
+  font-size: 20px;
+}
+
+.menu-item p {
+  margin: 0;
+  font-size: 16px;
+  color: #333;
+}
+  .menu-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 14px;
+    border: 1px solid #0c0c0d;
+    border-radius: 10px;
+    font-size: 25px;
+    font-weight: 400;
+  }
+
+  /* Icon Styles */
+  .icon-home::before {
+    content: "🏠";
+  }
+
+  .icon-analytics::before {
+    content: "📊";
+  }
+
+  .icon-gigs::before {
+    content: "📋";
+  }
+
+  .icon-inbox::before {
+    content: "✉️";
+  }
+
+  .icon-earnings::before {
+    content: "💵";
+  }
+
+  .icon-help::before {
+    content: "❓";
+  }
+
+  .icon-settings::before {
+    content: "⚙️";
+  }
+
+  .icon-logout::before {
+    content: "🚪";
+  }

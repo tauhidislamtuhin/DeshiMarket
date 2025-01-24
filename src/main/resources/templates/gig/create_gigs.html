@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create New Gig</title>
+    <link rel="stylesheet" href="/css/gig/creategigs.css" />
+  </head>
+  <body>
+    <div class="navbar">
+        <div class="container_nav">
+          <div class="navbar-content">
+            <div class="logo">
+              <img class="logo-img" src="/images/logo.png" alt="logo">
+            </div>
+            <div class="menu">
+              <ul class="menu-list">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Gallery</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a class="contact-btn" href="#">CONTACT</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    <div class="container">
+      <h1 class="title">Create New Gig</h1>
+      <form th:object="${gigModelDto}" method="post" enctype="multipart/form-data" class="form">
+        <div class="form-group" >
+          <label for="title" class="label">Title:</label>
+          <input id="title" class="input" type="text" placeholder="Title" />
+        </div>
+        <div class="form-group">
+          <label for="description" class="label">Description:</label>
+          <textarea
+            id="description"
+            class="textarea"
+            placeholder="Description"
+          ></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="price" class="label">Price:</label>
+          <input id="price" class="input" type="number" placeholder="Number" />
+        </div>
+        <div class="form-group">
+          <label for="keyword" class="label">Keyword:</label>
+          <input id="keyword" class="input" type="text" placeholder="Keyword" />
+        </div>
+        <div class="form-group">
+          <label for="image" class="label">Image:</label>
+          <input id="image" type="file" />
+        </div>
+        <div class="buttons">
+          <button type="button" class="button cancel">Cancel</button>
+          <button type="submit" class="button confirm">Confirm</button>
+        </div>
+      </form>
+    </div>
+    <div class="footer">
+      <!-- Add your Footer content here -->
+    </div>
+  </body>
+</html>
